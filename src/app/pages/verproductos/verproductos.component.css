@@ -1,0 +1,10 @@
+#buscarBtn {
+    background-color: #7600F5;
+    color: white;
+    border: none;
+  }
+  
+  #actualizarBtn {
+    width: 150px;
+    font-weight: bold;
+  }

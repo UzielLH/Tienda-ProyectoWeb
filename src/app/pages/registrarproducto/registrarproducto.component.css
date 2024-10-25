@@ -1,0 +1,11 @@
+.btn-danger {
+  width: 150px;
+}
+
+.btn-success {
+  width: 180px;
+}
+.btn-purple {
+  background-color: #7600F5;
+  color: white;
+}

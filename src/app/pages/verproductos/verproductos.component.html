@@ -1,0 +1,64 @@
+<div class="container mt-4">
+    <!-- Barra de búsqueda -->
+    <div class="row mb-3">
+      <div class="col-md-8">
+        <label for="buscarProducto" class="form-label">Buscar producto:</label>
+        <input type="text" id="buscarProducto" class="form-control d-inline-block w-50">
+        <button class="btn btn-primary" id="buscarBtn">BUSCAR</button>
+      </div>
+    </div>
+    <!-- Tabla de productos -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-primary text-center">
+          <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Departamento</th>
+            <th>Marca</th>
+            <th>Costo producto</th>
+            <th>Precio Venta</th>
+            <th>Unidad</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí irán los productos (relleno de ejemplo) -->
+          <tr>
+            <td>001</td>
+            <td>Producto 1</td>
+            <td>Electrónica</td>
+            <td>Marca X</td>
+            <td>$200</td>
+            <td>$250</td>
+            <td>3</td>
+            <td>
+              <div class="col-md-12 text-center">
+                <button class="btn btn-warning" id="actualizarBtn"  routerLink="/registrarproducto">ACTUALIZAR</button>
+            </div>
+            <div class="col-md-12 text-center">
+              <button class="btn btn-danger" id="actualizarBtn" (click)="onBuscarClickSucess()">BORRAR</button>
+          </div>
+          </td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Producto 2</td>
+            <td>Alimentos</td>
+            <td>Marca Y</td>
+            <td>$50</td>
+            <td>$70</td>
+            <td>5</td>
+            <td>
+              <div class="col-md-12 text-center">
+                <button class="btn btn-warning" id="actualizarBtn"  routerLink="/registrarproducto">ACTUALIZAR</button>
+            </div>
+            <div class="col-md-12 text-center">
+              <button class="btn btn-danger" id="actualizarBtn" (click)="onBuscarClickSucess()">BORRAR</button>
+          </div>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

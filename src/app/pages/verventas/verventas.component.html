@@ -1,0 +1,79 @@
+<!-- Contenido principal -->
+<div class="container mt-4">
+    <h2 class="text-center">Ventas por día</h2>
+    
+    <div class="row mt-4">
+        <!-- Tabla de ventas -->
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Día</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>17/08/23</td>
+                        <td>
+                            <ul>
+                                <li>Leche</li>
+                                <li>Huevos</li>
+                                <li>Galletas</li>
+                                <li>Cochomilk</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>5</li>
+                                <li>7</li>
+                                <li>3</li>
+                                <li>2</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>$350</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>18/08/23</td>
+                        <td>
+                            <ul>
+                                <li>Manzanas</li>
+                                <li>Flan</li>
+                                <li>Refresco</li>
+                                <li>Pan</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>5</li>
+                                <li>7</li>
+                                <li>3</li>
+                                <li>2</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>$350</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Selector de fechas -->
+        <div class="col-md-4">
+            <label for="datepicker" class="form-label">Seleccionar fecha</label>
+            <input type="date" id="datepicker" class="form-control">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-purple">BUSCAR</button>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <div class="mb-3">
+          <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
+          <input type="text" class="form-control" id="nombreProducto">
+        </div>
+        <div class="mb-3">
+          <label for="departamento" class="form-label">Departamento:</label>
+          <input type="text" class="form-control" id="departamento">
+        </div>
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca:</label>
+          <input type="text" class="form-control" id="marca">
+        </div>
+        <div class="mb-3">
+          <label for="costoProducto" class="form-label">Costo de producto:</label>
+          <input type="number" class="form-control" id="costoProducto">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form>
+        <div class="mb-3">
+          <label for="precioVenta" class="form-label">Precio de venta:</label>
+          <input type="number" class="form-control" id="precioVenta">
+        </div>
+        <div class="mb-3">
+          <label for="totalRegistrar" class="form-label">Total a registrar:</label>
+          <input type="number" class="form-control" id="totalRegistrar">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6 d-flex justify-content-start">
+      <button class="btn btn-danger"  (click)="onBuscarClickFailed()">CANCELAR</button>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end">
+      <button class="btn btn-success"  (click)="onBuscarClickSucess()">REGISTRAR PRODUCTO</button>
+    </div>
+  </div>
+</div>
