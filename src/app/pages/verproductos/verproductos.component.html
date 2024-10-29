@@ -4,7 +4,12 @@
       <div class="col-md-8">
         <label for="buscarProducto" class="form-label">Buscar producto:</label>
         <input type="text" id="buscarProducto" class="form-control d-inline-block w-50">
-        <button class="btn btn-primary" id="buscarBtn">BUSCAR</button>
+        <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria">
+          <option value="todo">Todo</option>
+          <option value="producto">Producto</option>
+          <option value="departamento">Departamento</option>
+        </select>
+        <button class="btn btn-primary ms-2" id="buscarBtn">BUSCAR</button>
       </div>
     </div>
     <!-- Tabla de productos -->
