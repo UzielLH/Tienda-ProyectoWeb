@@ -4,11 +4,11 @@
       <form>
         <div class="mb-3">
           <label for="nombreProducto" class="form-label">Nombre del Producto:</label>
-          <input type="text" class="form-control" id="nombreProducto">
+          <input type="text" class="form-control" id="nombreProducto" [(ngModel)]="producto.nombre" name="nombre">
         </div>
         <div class="mb-3">
           <label for="departamento" class="form-label">Departamento:</label>
-          <select class="form-control" id="departamento">
+          <select class="form-control" id="departamento" [(ngModel)]="producto.departamento" name="departamento">
             <option value="abarrotes">Abarrotes</option>
             <option value="higiene">Higiene</option>
             <option value="lacteos">Lácteos</option>
@@ -24,11 +24,11 @@
         </div>
         <div class="mb-3">
           <label for="marca" class="form-label">Marca:</label>
-          <input type="text" class="form-control" id="marca">
+          <input type="text" class="form-control" id="marca" [(ngModel)]="producto.marca" name="marca">
         </div>
         <div class="mb-3">
           <label for="costoProducto" class="form-label">Costo de producto:</label>
-          <input type="number" class="form-control" id="costoProducto">
+          <input type="number" class="form-control" id="costoProducto" [(ngModel)]="producto.costo" name="costo">
         </div>
       </form>
     </div>
@@ -36,21 +36,21 @@
       <form>
         <div class="mb-3">
           <label for="precioVenta" class="form-label">Precio de venta:</label>
-          <input type="number" class="form-control" id="precioVenta">
+          <input type="number" class="form-control" id="precioVenta" [(ngModel)]="producto.precioVenta" name="precioVenta">
         </div>
         <div class="mb-3">
           <label for="totalRegistrar" class="form-label">Total a registrar:</label>
-          <input type="number" class="form-control" id="totalRegistrar">
+          <input type="number" class="form-control" id="totalRegistrar" [(ngModel)]="producto.cantidad" name="totalRegistrar">
         </div>
       </form>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-md-6 d-flex justify-content-start">
-      <button class="btn btn-danger"  (click)="onBuscarClickFailed()">CANCELAR</button>
+      <button class="btn btn-danger" (click)="onBuscarClickFailed()">CANCELAR</button>
     </div>
     <div class="col-md-6 d-flex justify-content-end">
-      <button class="btn btn-success"  (click)="onBuscarClickSucess()">REGISTRAR PRODUCTO</button>
+      <button class="btn btn-success" (click)="onBuscarClickSucess()">REGISTRAR PRODUCTO</button>
     </div>
   </div>
 </div>

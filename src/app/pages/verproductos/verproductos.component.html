@@ -1,69 +1,52 @@
 <div class="container mt-4">
-    <!-- Barra de búsqueda -->
-    <div class="row mb-3">
-      <div class="col-md-8">
-        <label for="buscarProducto" class="form-label">Buscar producto:</label>
-        <input type="text" id="buscarProducto" class="form-control d-inline-block w-50">
-        <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria">
-          <option value="todo">Todo</option>
-          <option value="producto">Producto</option>
-          <option value="departamento">Departamento</option>
-        </select>
-        <button class="btn btn-primary ms-2" id="buscarBtn">BUSCAR</button>
-      </div>
-    </div>
-    <!-- Tabla de productos -->
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead class="table-primary text-center">
-          <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Departamento</th>
-            <th>Marca</th>
-            <th>Costo producto</th>
-            <th>Precio Venta</th>
-            <th>Unidad</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Aquí irán los productos (relleno de ejemplo) -->
-          <tr>
-            <td>001</td>
-            <td>Producto 1</td>
-            <td>Electrónica</td>
-            <td>Marca X</td>
-            <td>$200</td>
-            <td>$250</td>
-            <td>3</td>
-            <td>
-              <div class="col-md-12 text-center">
-                <button class="btn btn-warning" id="actualizarBtn"  routerLink="/registrarproducto">ACTUALIZAR</button>
-            </div>
-            <div class="col-md-12 text-center">
-              <button class="btn btn-danger" id="actualizarBtn" (click)="onBuscarClickSucess()">BORRAR</button>
-          </div>
-          </td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Producto 2</td>
-            <td>Alimentos</td>
-            <td>Marca Y</td>
-            <td>$50</td>
-            <td>$70</td>
-            <td>5</td>
-            <td>
-              <div class="col-md-12 text-center">
-                <button class="btn btn-warning" id="actualizarBtn"  routerLink="/registrarproducto">ACTUALIZAR</button>
-            </div>
-            <div class="col-md-12 text-center">
-              <button class="btn btn-danger" id="actualizarBtn" (click)="onBuscarClickSucess()">BORRAR</button>
-          </div>
-          </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <label for="buscarProducto" class="form-label">Buscar producto:</label>
+      <input type="text" id="buscarProducto" class="form-control d-inline-block w-50">
+      <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria">
+        <option value="todo">Todo</option>
+        <option value="producto">Producto</option>
+        <option value="departamento">Departamento</option>
+      </select>
+      <button class="btn btn-primary ms-2" id="buscarBtn">BUSCAR</button>
     </div>
   </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Departamento</th>
+          <th>Marca</th>
+          <th>Costo producto</th>
+          <th>Precio Venta</th>
+          <th>Unidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (producto of productos; track $index) {
+          <tr >
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.departamento }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>${{ producto.costo }}</td>
+            <td>${{ producto.precioVenta }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>
+              <div class="col-md-12 text-center">
+                <button class="btn btn-warning" routerLink="/registrarproducto">ACTUALIZAR</button>
+              </div>
+              <div class="col-md-12 text-center">
+                <button class="btn btn-danger" (click)="onBuscarClickSucess()">BORRAR</button>
+              </div>
+            </td>
+          </tr>
+        }
+        
+      </tbody>
+    </table>
+  </div>
+</div>
