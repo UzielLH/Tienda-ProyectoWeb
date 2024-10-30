@@ -8,6 +8,7 @@ import { RegistroerrorventaComponent } from './pages/registroerrorventa/registro
 import { RegistroerrorproductoComponent } from './pages/registroerrorproducto/registroerrorproducto.component';
 import { RegistroexitosoventaComponent } from './pages/registroexitosoventa/registroexitosoventa.component';
 import { RegistroexitosoproductoComponent } from './pages/registroexitosoproducto/registroexitosoproducto.component';
+import { ActualizarProductoComponent } from './pages/actualizar-producto/actualizar-producto.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,10 @@ export const routes: Routes = [
     {
         path: 'registroexitosoproducto',
         component: RegistroexitosoproductoComponent
+    },
+    {
+        path:'actualizarproducto',
+        component: ActualizarProductoComponent
     },
     {
         path:'**',

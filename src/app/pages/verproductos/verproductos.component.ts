@@ -31,14 +31,14 @@ export class VerproductosComponent implements OnInit {
     );
   }
   
-  getProductoById(id: number): void {
-    this.tcgService.getProducto(id).subscribe(
+  getProductByNombre(nombre: string): void {
+    this.tcgService.getProductoByNombre(nombre).subscribe(
       (data: any) => {
-        console.log('Producto obtenido:', data); // Verificar la respuesta
-        // Opcional: mostrar los datos en un modal
+        console.log('Producto encontrado:', data); // Verificar la respuesta
+        this.productos = data; // Asignar los datos a la variable
       },
       (error) => {
-        console.error('Error al obtener el producto', error);
+        console.error('Error al obtener producto', error);
       }
     );
   }
