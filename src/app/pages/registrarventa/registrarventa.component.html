@@ -13,19 +13,19 @@
         
         <div class="mb-3">
           <label for="departamento" class="form-label">Departamento:</label>
-          <input type="text" class="form-control" id="departamento" [value]="producto?.departamento || ''">
+          <input type="text" class="form-control" id="departamento" [value]="producto?.departamento || ''" readonly>
         </div>
         <div class="mb-3">
           <label for="marca" class="form-label">Marca:</label>
-          <input type="text" class="form-control" id="marca" [value]="producto?.marca || ''">
+          <input type="text" class="form-control" id="marca" [value]="producto?.marca || ''" readonly>
         </div>
         <div class="mb-3">
           <label for="costoProducto" class="form-label">Costo de producto:</label>
-          <input type="number" class="form-control" id="costoProducto" [value]="producto?.costo || ''">
+          <input type="number" class="form-control" id="costoProducto" [value]="producto?.costo || ''" readonly>
         </div>
         <div class="mb-3">
           <label for="precioVenta" class="form-label">Precio de venta:</label>
-          <input type="number" class="form-control" id="precioVenta" [value]="producto?.precioVenta || ''">
+          <input type="number" class="form-control" id="precioVenta" [value]="producto?.precioVenta || ''" readonly>
         </div>
       </form>
     </div>
