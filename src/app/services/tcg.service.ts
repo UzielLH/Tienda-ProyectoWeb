@@ -17,7 +17,7 @@ private _http=inject(HttpClient);
     return this._http.get(APIURL+'productos/departamento/'+departamento);
   }
   getProductoByNombre(nombre:string){
-    return this._http.get(APIURL+'productos/producto/nombre/'+nombre);
+    return this._http.get(APIURL+'productos/producto/'+nombre);
   }
   getCantidadProducto(id:number){
     return this._http.get(APIURL+'productos/cantidadProducto/'+id);

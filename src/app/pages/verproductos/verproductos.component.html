@@ -2,13 +2,13 @@
   <div class="row mb-3">
     <div class="col-md-8">
       <label for="buscarProducto" class="form-label">Buscar producto:</label>
-      <input type="text" id="buscarProducto" class="form-control d-inline-block w-50">
-      <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria">
+      <input type="text" id="buscarProducto" class="form-control d-inline-block w-50" [(ngModel)]="buscarTermino">
+      <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria" [(ngModel)]="buscarCategoria">
         <option value="todo">Todo</option>
         <option value="producto">Producto</option>
         <option value="departamento">Departamento</option>
       </select>
-      <button class="btn btn-primary ms-2" id="buscarBtn">BUSCAR</button>
+      <button class="btn btn-primary ms-2" (click)="buscarProductos()">BUSCAR</button>
     </div>
   </div>
   <div class="table-responsive">

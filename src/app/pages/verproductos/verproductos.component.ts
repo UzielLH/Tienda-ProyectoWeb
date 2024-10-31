@@ -2,55 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TcgService } from '../../services/tcg.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-verproductos',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './verproductos.component.html',
   styleUrl: './verproductos.component.css'
 })
 export class VerproductosComponent implements OnInit {
   productos: any[] = []; // Arreglo para almacenar los productos
+  buscarTermino: string = ''; // Término de búsqueda
+  buscarCategoria: string = 'todo'; // Categoría seleccionada
 
   constructor(private tcgService: TcgService) { }
 
   ngOnInit(): void {
-    this.getAllProductos();
+    this.getAllProductos(); // Cargar todos los productos al inicio
   }
 
   getAllProductos(): void {
     this.tcgService.getAllproductos().subscribe(
       (data: any) => {
-        console.log('Productos obtenidos:', data); // Verificar la respuesta
-        this.productos = data; // Asignar los datos a la variable
+        this.productos = data;
       },
       (error) => {
         console.error('Error al obtener productos', error);
       }
     );
   }
-  
-  getProductByNombre(nombre: string): void {
-    this.tcgService.getProductoByNombre(nombre).subscribe(
-      (data: any) => {
-        console.log('Producto encontrado:', data); // Verificar la respuesta
-        this.productos = data; // Asignar los datos a la variable
-      },
-      (error) => {
-        console.error('Error al obtener producto', error);
-      }
-    );
+
+  // Nuevo método para buscar productos
+  buscarProductos(): void {
+    if (this.buscarCategoria === 'producto') {
+      // Buscar por nombre del producto
+      this.tcgService.getProductoByNombre(this.buscarTermino).subscribe(
+        (data: any) => {
+          this.productos = data;
+        },
+        (error) => {
+          console.error('Error al buscar producto por nombre', error);
+        }
+      );
+    } else if (this.buscarCategoria === 'departamento') {
+      // Buscar por departamento
+      this.tcgService.getProductosByDepartamento(this.buscarTermino).subscribe(
+        (data: any) => {
+          this.productos = data;
+        },
+        (error) => {
+          console.error('Error al buscar producto por departamento', error);
+        }
+      );
+    } else {
+      // Si es "todo", mostrar todos los productos
+      this.getAllProductos();
+    }
   }
-  onBuscarClickSucess(): void {
-    Swal.fire({
-      title: 'Borrado exitoso',
-      icon: 'success',
-      timer: 1500,
-      showConfirmButton: false,
-    });
-  }
-  // Nuevo método para eliminar producto
+
+  // Método para eliminar producto (ya implementado)
   eliminarProducto(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -71,7 +82,7 @@ export class VerproductosComponent implements OnInit {
               timer: 1500,
               showConfirmButton: false,
             });
-            // Después de borrar, actualizamos la lista de productos
+            // Actualizar la lista de productos
             this.productos = this.productos.filter(producto => producto.id !== id);
           },
           (error) => {
@@ -81,7 +92,6 @@ export class VerproductosComponent implements OnInit {
               timer: 1500,
               showConfirmButton: false,
             });
-            console.error('Error al eliminar producto', error);
           }
         );
       }

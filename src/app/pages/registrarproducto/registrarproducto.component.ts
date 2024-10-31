@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router'; // Importa Router
 import Swal from 'sweetalert2';
 import { TcgService } from '../../services/tcg.service';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class RegistrarproductoComponent {
   producto: any = {};  // Inicializa un objeto para almacenar los datos del producto
 
-  constructor(private tcgService: TcgService) {}  // Inyecta el servicio
+  constructor(private tcgService: TcgService, private router: Router) {}  // Inyecta Router aquí
 
   onBuscarClickSucess(): void {
     this.tcgService.createProducto(this.producto).subscribe({
@@ -41,10 +41,12 @@ export class RegistrarproductoComponent {
 
   onBuscarClickFailed(): void {
     Swal.fire({
-      title: 'Registro fallido',
-      icon: 'error',
+      title: 'Acción cancelada',
+      icon: 'warning',
       timer: 1500,
       showConfirmButton: false,
+    }).then(() => {
+      this.router.navigate(['/home']); // Redirige a la página de inicio
     });
   }
 }
