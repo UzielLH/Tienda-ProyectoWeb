@@ -37,10 +37,10 @@
             <td>{{ producto.cantidad }}</td>
             <td>
               <div class="col-md-12 text-center">
-                <button class="btn btn-warning" routerLink="/registrarproducto">ACTUALIZAR</button>
+                <button class="btn btn-warning" [routerLink]="['/actualizarproducto', producto.id]">ACTUALIZAR</button>
               </div>
               <div class="col-md-12 text-center">
-                <button class="btn btn-danger" (click)="onBuscarClickSucess()">BORRAR</button>
+                <button class="btn btn-danger" (click)="eliminarProducto(producto.id)">BORRAR</button>
               </div>
             </td>
           </tr>

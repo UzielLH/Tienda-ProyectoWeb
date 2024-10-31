@@ -48,7 +48,7 @@ export const routes: Routes = [
         component: RegistroexitosoproductoComponent
     },
     {
-        path:'actualizarproducto',
+        path: 'actualizarproducto/:id',  // Agregar el parámetro 'id'
         component: ActualizarProductoComponent
     },
     {

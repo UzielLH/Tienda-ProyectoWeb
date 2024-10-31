@@ -50,4 +50,41 @@ export class VerproductosComponent implements OnInit {
       showConfirmButton: false,
     });
   }
+  // Nuevo método para eliminar producto
+  eliminarProducto(id: number): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.tcgService.deleteProducto(id).subscribe(
+          (response: any) => {
+            Swal.fire({
+              title: 'Producto eliminado',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false,
+            });
+            // Después de borrar, actualizamos la lista de productos
+            this.productos = this.productos.filter(producto => producto.id !== id);
+          },
+          (error) => {
+            Swal.fire({
+              title: 'Error al eliminar producto',
+              icon: 'error',
+              timer: 1500,
+              showConfirmButton: false,
+            });
+            console.error('Error al eliminar producto', error);
+          }
+        );
+      }
+    });
+  }
 }
