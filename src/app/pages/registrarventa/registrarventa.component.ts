@@ -14,8 +14,10 @@ import { FormsModule } from '@angular/forms';
 export class RegistrarventaComponent {
   productoNombre: string = '';
   producto: any = {};
-  cantidadComprar: number = 0;
+  cantidadComprar: number | null = null;
   total: number = 0;
+  isCantidadReadonly: boolean = true;
+
   constructor(private tcgService: TcgService) {}
 
   buscarProducto(): void {
@@ -32,6 +34,7 @@ export class RegistrarventaComponent {
           timer: 1500,
           showConfirmButton: false,
         });
+        this.isCantidadReadonly = false;
       },
       (error) => {
         this.productoNombre = ''; // Limpia el campo productoNombre
@@ -45,20 +48,25 @@ export class RegistrarventaComponent {
       }
     );
   }
+
   limpiarCampos(): void {
     this.productoNombre = '';
     this.producto = null;
-    this.cantidadComprar = 0;
+    this.cantidadComprar = null;
     this.total = 0;
+    this.isCantidadReadonly = true;
   }
 
   validarCantidad(): void {
-
     console.log(this.producto, this.cantidadComprar);
     
-    if (this.cantidadComprar > 0 && this.cantidadComprar < this.producto.cantidad) {
+    if (
+      this.cantidadComprar !== null &&
+      this.cantidadComprar > 0 &&
+      this.cantidadComprar <= this.producto.cantidad
+    ) {
       console.log('Cantidad válida');
-      this.total = this.cantidadComprar * this.producto.precioVenta ;
+      this.total = this.cantidadComprar * this.producto.precioVenta;
       console.log(this.total);
     } else {
       console.log('Cantidad no válida');
@@ -71,12 +79,9 @@ export class RegistrarventaComponent {
         timer: 1500,
         showConfirmButton: false,
       });
-
     }
-    return;
   }
 
-  
   onBuscarClickSucess(): void {
     Swal.fire({
       title: 'Registro exitoso',

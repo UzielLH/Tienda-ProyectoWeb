@@ -37,17 +37,17 @@
         </div>
         <div class="mb-3">
           <label for="cantidad" class="form-label">Cantidad:</label>
-          <input type="number" class="form-control" id="cantidad" [ngModelOptions]="{standalone: true}" [(ngModel)]="cantidadComprar" (input)="validarCantidad()">
+          <input type="number" class="form-control" id="cantidad" [ngModelOptions]="{standalone: true}" [(ngModel)]="cantidadComprar" (input)="validarCantidad()" [readonly]="isCantidadReadonly">
         </div>
         <div class="mb-3">
           <label for="precioVenta2" class="form-label">Total final:</label>
-          <input type="number" class="form-control" id="precioVenta2" [value]="total">
+          <input type="number" class="form-control" id="precioVenta2" [value]="total" readonly>
         </div>
       </form>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-md-6 d-flex justify-content-start">
+  <div class="row mt-4 botones">
+    <div class="col-md-6 d-flex justify-content-start ">
       <button class="btn btn-danger" (click)="onBuscarClickFailed()">CANCELAR VENTA</button>
     </div>
     <div class="col-md-6 d-flex justify-content-end">
