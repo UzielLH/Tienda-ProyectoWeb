@@ -28,13 +28,13 @@
       <tbody>
         @for (producto of productos; track $index) {
           <tr >
-            <td>{{ producto.id }}</td>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.departamento }}</td>
-            <td>{{ producto.marca }}</td>
-            <td>${{ producto.costo }}</td>
-            <td>${{ producto.precioVenta }}</td>
-            <td>{{ producto.cantidad }}</td>
+            <td class="text-center">{{ producto.id }}</td>
+            <td class="text-center">{{ producto.nombre }}</td>
+            <td class="text-center">{{ producto.departamento }}</td>
+            <td class="text-center">{{ producto.marca }}</td>
+            <td class="text-center">${{ producto.costo }}</td>
+            <td class="text-center">${{ producto.precioVenta }}</td>
+            <td class="text-center">{{ producto.cantidad }}</td>
             <td>
               <div class="col-md-12 text-center">
                 <div class="row justify-content-center">

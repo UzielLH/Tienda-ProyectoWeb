@@ -21,11 +21,17 @@
         </div>
         <div class="mb-3">
           <label for="costoProducto" class="form-label">Costo de producto:</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
           <input type="number" class="form-control" id="costoProducto" [value]="producto?.costo || ''" readonly>
+          </div>
         </div>
         <div class="mb-3">
           <label for="precioVenta" class="form-label">Precio de venta:</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
           <input type="number" class="form-control" id="precioVenta" [value]="producto?.precioVenta || ''" readonly>
+          </div>
         </div>
       </form>
     </div>
@@ -41,7 +47,10 @@
         </div>
         <div class="mb-3">
           <label for="precioVenta2" class="form-label">Total final:</label>
+          <div class="input-group">
+          <span class="input-group-text">$</span>
           <input type="number" class="form-control" id="precioVenta2" [value]="total" readonly>
+          </div>
         </div>
       </form>
     </div>
