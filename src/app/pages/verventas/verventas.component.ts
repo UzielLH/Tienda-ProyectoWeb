@@ -27,6 +27,7 @@ export class VerventasComponent implements OnInit {
         icon: 'warning',
         title: 'Fecha no seleccionada',
         text: 'Por favor, selecciona una fecha antes de buscar.',
+        showConfirmButton: false,
         timer:1500
       });
       return;
