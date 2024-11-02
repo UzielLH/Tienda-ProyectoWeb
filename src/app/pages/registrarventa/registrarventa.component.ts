@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TcgService } from '../../services/tcg.service';
 import { FormsModule } from '@angular/forms';
@@ -17,8 +17,9 @@ export class RegistrarventaComponent {
   cantidadComprar: number | null = null;
   total: number = 0;
   isCantidadReadonly: boolean = true;
+  fecha: string = '';
 
-  constructor(private tcgService: TcgService) {}
+  constructor(private tcgService: TcgService, private router: Router) {}
 
   buscarProducto(): void {
     console.log(this.productoNombre);
@@ -27,20 +28,31 @@ export class RegistrarventaComponent {
       (data: any) => {
         console.log(data);
         
-        this.producto = data[0];
-        Swal.fire({
-          title: 'Producto encontrado',
-          icon: 'success',
-          timer: 1500,
-          showConfirmButton: false,
-        });
-        this.isCantidadReadonly = false;
+        if (data && data.length > 0) {
+          this.producto = data[0];
+          Swal.fire({
+            title: 'Producto encontrado',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+          });
+          this.isCantidadReadonly = false;
+        } else {
+          this.productoNombre = ''; // Limpia el campo productoNombre
+          this.producto = null; // Limpia el objeto producto
+          Swal.fire({
+            title: 'Producto no encontrado',
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false,
+          });
+        }
       },
       (error) => {
         this.productoNombre = ''; // Limpia el campo productoNombre
         this.producto = null; // Limpia el objeto producto
         Swal.fire({
-          title: 'Producto no encontrado',
+          title: 'Error al buscar el producto',
           icon: 'error',
           timer: 1500,
           showConfirmButton: false,
@@ -54,6 +66,7 @@ export class RegistrarventaComponent {
     this.producto = null;
     this.cantidadComprar = null;
     this.total = 0;
+    this.fecha = '';
     this.isCantidadReadonly = true;
   }
 
@@ -82,21 +95,56 @@ export class RegistrarventaComponent {
     }
   }
 
-  onBuscarClickSucess(): void {
-    Swal.fire({
-      title: 'Registro exitoso',
-      icon: 'success',
-      timer: 1500,
-      showConfirmButton: false,
-    });
+  registrarVenta(): void {
+    // Validar que todos los campos estén completos
+    if (!this.producto || !this.fecha || !this.cantidadComprar || this.total <= 0) {
+      Swal.fire({
+        title: 'Datos incompletos',
+        icon: 'warning',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      return;
+    }
+
+    const venta = {
+      producto_id: this.producto.id,
+      fecha: this.fecha,
+      cantidad: this.cantidadComprar,
+      total: this.total
+    };
+
+    this.tcgService.createVenta(venta).subscribe(
+      (response) => {
+        console.log(response);
+        Swal.fire({
+          title: 'Registro exitoso',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        this.limpiarCampos();
+      },
+      (error) => {
+        console.error(error);
+        Swal.fire({
+          title: 'Error al registrar la venta',
+          icon: 'error',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    );
   }
 
   onBuscarClickFailed(): void {
     Swal.fire({
-      title: 'Registro fallido',
-      icon: 'error',
+      title: 'Acción cancelada',
+      icon: 'warning',
       timer: 1500,
       showConfirmButton: false,
+    }).then(() => {
+      this.router.navigate(['/home']); // Redirige a la página de inicio
     });
   }
 }

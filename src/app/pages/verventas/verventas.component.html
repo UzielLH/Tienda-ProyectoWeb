@@ -1,4 +1,3 @@
-<!-- Contenido principal -->
 <div class="container mt-4">
     <h2 class="text-center">Ventas por día</h2>
     
@@ -15,65 +14,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>17/08/23</td>
+                    <tr *ngFor="let venta of ventas">
+                        <td>{{ venta.fecha }}</td>
                         <td>
                             <ul>
-                                <li>Leche</li>
-                                <li>Huevos</li>
-                                <li>Galletas</li>
-                                <li>Cochomilk</li>
+                                <li>{{ venta.productos.nombre }}</li>
                             </ul>
                         </td>
-                        <td>
-                            <ul>
-                                <li>5</li>
-                                <li>7</li>
-                                <li>3</li>
-                                <li>2</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>$350</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>18/08/23</td>
-                        <td>
-                            <ul>
-                                <li>Manzanas</li>
-                                <li>Flan</li>
-                                <li>Refresco</li>
-                                <li>Pan</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>5</li>
-                                <li>7</li>
-                                <li>3</li>
-                                <li>2</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>$350</li>
-                            </ul>
-                        </td>
+                        <td>{{ venta.cantidad }}</td>
+                        <td>{{ venta.total | currency }}</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- Suma total -->
+            <div class="text-end mt-3">
+                <h5>Suma Total: {{ sumaTotal | currency }}</h5>
+            </div>
         </div>
         
         <!-- Selector de fechas -->
         <div class="col-md-4">
             <label for="datepicker" class="form-label">Seleccionar fecha</label>
-            <input type="date" id="datepicker" class="form-control">
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-purple">BUSCAR</button>
-              </div>
+            <input type="date" id="datepicker" class="form-control" [(ngModel)]="fechaSeleccionada">
+            <div class="d-flex justify-content-end mt-2">
+                <button class="btn btn-purple" (click)="buscarVentas()">Buscar</button>
+                <button class="btn btn-secondary ms-2" (click)="mostrarTodasVentas()">Mostrar todas las ventas</button>
+            </div>
         </div>
     </div>
 </div>
