@@ -9,6 +9,7 @@ import { RegistroerrorproductoComponent } from './pages/registroerrorproducto/re
 import { RegistroexitosoventaComponent } from './pages/registroexitosoventa/registroexitosoventa.component';
 import { RegistroexitosoproductoComponent } from './pages/registroexitosoproducto/registroexitosoproducto.component';
 import { ActualizarProductoComponent } from './pages/actualizar-producto/actualizar-producto.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     {
@@ -50,6 +51,10 @@ export const routes: Routes = [
     {
         path: 'actualizarproducto/:id',  // Agregar el parámetro 'id'
         component: ActualizarProductoComponent
+    },
+    {
+        path:'login',
+        component:LoginComponent
     },
     {
         path:'**',

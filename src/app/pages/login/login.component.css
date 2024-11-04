@@ -1,0 +1,16 @@
+.login-box {
+    border: 2px solid #0274ED;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary {
+    background-color: #0274ED;
+    border-color: #0274ED;
+  }
+  
+  .btn-primary:hover {
+    background-color: #025bb5;
+    border-color: #025bb5;
+  }
