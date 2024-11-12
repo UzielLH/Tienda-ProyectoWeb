@@ -3,17 +3,17 @@
     <div class="col-md-8">
       <label for="buscarProducto" class="form-label">Buscar producto:</label>
       <input type="text" id="buscarProducto" class="form-control d-inline-block w-50" [(ngModel)]="buscarTermino">
-      <select class="form-select d-inline-block w-25 ms-2" id="buscarCategoria" [(ngModel)]="buscarCategoria">
-        <option value="todo">Todo</option>
-        <option value="producto">Producto</option>
+      <select  class="form-select d-inline-block w-25 ms-2" id="buscarCategoria" [(ngModel)]="buscarCategoria">
+        <option value="producto" selected>Producto</option>
         <option value="departamento">Departamento</option>
+        <option value="todo">Todo</option>
       </select>
       <button class="btn btn-primary ms-2" (click)="buscarProductos()">BUSCAR</button>
     </div>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
-      <thead class="table-primary text-center"  style="background-color: #B9AEF5 !important" >
+      <thead class="table-success text-center"  style="background-color: #B9AEF5 !important" >
         <tr>
           <th>id</th>
           <th>Nombre</th>

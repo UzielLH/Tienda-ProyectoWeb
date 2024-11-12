@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class VerproductosComponent implements OnInit {
   productos: any[] = []; // Arreglo para almacenar los productos
   buscarTermino: string = ''; // Término de búsqueda
-  buscarCategoria: string = 'todo'; // Categoría seleccionada
+  buscarCategoria: string = 'producto'; // Categoría seleccionada
 
   constructor(private tcgService: TcgService) { }
 

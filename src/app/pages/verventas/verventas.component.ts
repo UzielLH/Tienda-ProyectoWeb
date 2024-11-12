@@ -34,8 +34,18 @@ export class VerventasComponent implements OnInit {
     }
 
     this.tcgService.getVentaByFecha(this.fechaSeleccionada).subscribe((data: any) => {
+      if (data.length === 0) {
+      Swal.fire({
+        icon: 'info',
+        title: 'No hay ventas',
+        text: 'No se encontraron ventas para la fecha seleccionada.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      } else {
       this.ventas = data;
       this.calcularSumaTotal();
+      }
     });
   }
 
