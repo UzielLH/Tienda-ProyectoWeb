@@ -3,24 +3,44 @@ import { RouterLink, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TcgService } from '../../services/tcg.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registrarventa',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './registrarventa.component.html',
   styleUrl: './registrarventa.component.css'
 })
 export class RegistrarventaComponent {
   productoNombre: string = '';
   producto: any = {};
+  listaProductos: any[] = [];
+
   cantidadComprar: number | null = null;
   total: number = 0;
   isCantidadReadonly: boolean = true;
   fecha: string = '';
 
-  constructor(private tcgService: TcgService, private router: Router) {}
+  constructor(private tcgService: TcgService, private router: Router) {
+    this.cargarListaProductos();
+  }
 
+  cargarListaProductos(): void {
+    this.tcgService.getAllproductos().subscribe(
+      (data: any) => {
+        this.listaProductos = data;
+      },
+      (error) => {
+        Swal.fire({
+          title: 'Error al cargar productos',
+          icon: 'error',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    );
+  }
   buscarProducto(): void {
     console.log(this.productoNombre);
     

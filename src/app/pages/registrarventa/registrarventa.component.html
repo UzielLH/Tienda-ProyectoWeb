@@ -4,7 +4,18 @@
       <form>
         <div class="mb-3">
           <label for="productoNombre" class="form-label">Nombre del producto:</label>
-          <input type="text" class="form-control" id="productoNombre" [ngModelOptions]="{standalone: true}" [(ngModel)]="productoNombre">
+          <!-- <input type="text" class="form-control" id="productoNombre" [ngModelOptions]="{standalone: true}" [(ngModel)]="productoNombre"> -->
+          <input
+          type="text"
+          class="form-control"
+          id="productoNombre"
+          list="productosList"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="productoNombre"
+        />
+        <datalist id="productosList">
+          <option *ngFor="let producto of listaProductos" [value]="producto.nombre"></option>
+        </datalist>
         </div>
         <div class="d-flex justify-content-end">
           <button type="button" class="btn btn-purple" (click)="buscarProducto()">BUSCAR</button>
