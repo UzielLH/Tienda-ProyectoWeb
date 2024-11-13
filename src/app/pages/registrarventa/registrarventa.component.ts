@@ -142,6 +142,8 @@ export class RegistrarventaComponent {
           icon: 'success',
           timer: 1500,
           showConfirmButton: false,
+        }).then(() => {
+          this.router.navigate(['/verventas']); // Navega a 'verproductos' después del registro
         });
         this.limpiarCampos();
       },
