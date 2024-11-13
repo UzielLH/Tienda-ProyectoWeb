@@ -30,7 +30,7 @@
           <label for="costoProducto" class="form-label">Costo de producto:</label>
           <div class="input-group">
             <span class="input-group-text">$</span>  <!-- Agrega el signo de pesos -->
-            <input type="number" class="form-control" id="costoProducto" [(ngModel)]="producto.costo" name="costo">
+            <input type="number" class="form-control" id="costoProducto" [(ngModel)]="producto.costo" name="costo" min="0">
           </div>
         </div>
       </form>
@@ -41,12 +41,12 @@
           <label for="precioVenta" class="form-label">Precio de venta:</label>
           <div class="input-group">
             <span class="input-group-text">$</span>  <!-- Agrega el signo de pesos -->
-            <input type="number" class="form-control" id="precioVenta" [(ngModel)]="producto.precioVenta" name="precioVenta">
+            <input type="number" class="form-control" id="precioVenta" [(ngModel)]="producto.precioVenta" name="precioVenta" min="0">
           </div>
         </div>
         <div class="mb-3">
           <label for="totalRegistrar" class="form-label">Total a registrar:</label>
-          <input type="number" class="form-control" id="totalRegistrar" [(ngModel)]="producto.cantidad" name="totalRegistrar">
+          <input type="number" class="form-control" id="totalRegistrar" [(ngModel)]="producto.cantidad" name="totalRegistrar" min="0">
         </div>
       </form>
     </div>

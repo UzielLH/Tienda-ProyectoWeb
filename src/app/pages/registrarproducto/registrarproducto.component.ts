@@ -17,6 +17,28 @@ export class RegistrarproductoComponent {
   constructor(private tcgService: TcgService, private router: Router) {}  // Inyecta Router aquí
 
   onBuscarClickSucess(): void {
+    const { costo, precioVenta, cantidad } = this.producto;
+  
+    if (costo < 0 || precioVenta < 0 || cantidad < 0) {
+      Swal.fire({
+        title: 'Error',
+        text: 'No se aceptan números negativos.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      return;
+    }
+    if(costo > precioVenta){
+      Swal.fire({
+        title: 'Error',
+        text: 'El precio de venta no puede ser menor al costo.',
+        icon: 'error',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      return;
+    }
     this.tcgService.createProducto(this.producto).subscribe({
       next: (response) => {
         Swal.fire({
