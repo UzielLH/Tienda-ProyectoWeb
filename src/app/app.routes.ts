@@ -58,7 +58,7 @@ export const routes: Routes = [
     },
     {
         path:'**',
-        redirectTo: 'home',
+        redirectTo: 'verproductos',
         pathMatch: 'full'  // Redirects to the home page if the entered path doesn't match any of the routes defined above.
     }
 ];
